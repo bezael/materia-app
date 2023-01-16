@@ -6,13 +6,11 @@ import { WeatherRoutingModule } from './weather-routing.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    WeatherRoutingModule
-  ],
+  imports: [CommonModule, WeatherRoutingModule],
+  exports: [WeatherComponent],
   declarations: [WeatherComponent],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: WeatherInterceptor, multi: true}
-  ]
+    { provide: HTTP_INTERCEPTORS, useClass: WeatherInterceptor, multi: true },
+  ],
 })
 export class WeatherModule {}

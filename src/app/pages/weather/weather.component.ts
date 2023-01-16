@@ -1,5 +1,6 @@
-import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, inject } from '@angular/core';
+import { WeatherService } from './services/weather.service';
+import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { WeatherData } from './interfaces/weather.interface';
 
 @Component({
@@ -8,14 +9,10 @@ import { WeatherData } from './interfaces/weather.interface';
   styleUrls: ['./weather.component.css'],
 })
 export class WeatherComponent implements OnInit {
-  private readonly route = inject(ActivatedRoute);
-  public weather!: WeatherData;
-  public baseUrl = 'http://openweathermap.org/img/wn/';
+  public weather$!: Observable<WeatherData>;
+  constructor(private readonly weatherSvc: WeatherService) {}
 
   ngOnInit() {
-    this.route.data.subscribe(({ weatherData }) => {
-      console.log(weatherData.weather[0].main);
-      this.weather = weatherData;
-    });
+    this.weather$ = this.weatherSvc.weatherData$;
   }
 }

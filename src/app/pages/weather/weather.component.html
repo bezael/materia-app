@@ -1,8 +1,13 @@
-<div class="card" style="width: 18rem;">
-  <img src="{{baseUrl}}/{{weather.weather[0].icon}}@2x.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{weather.weather[0].main}}</h5>
-    <p class="card-text">{{weather.weather[0].description}}</p>
+<ng-container *ngIf="weather$ | async as weather; else loading">
+  <div class="card" style="width: 10rem;">
+    <div class="card-body">
+      <h5 class="card-title"> {{weather.city.name}} </h5>
+      <p class="card-text">Max:{{weather.list[0].temp.max}}</p>
+      <p class="card-text">Min:{{weather.list[0].temp.min}}</p>
+    </div>
   </div>
-</div>
+</ng-container>
 
+<ng-template #loading>
+  Introduce una ciudad
+</ng-template>
