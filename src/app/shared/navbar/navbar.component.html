@@ -1,0 +1,9 @@
+<header>
+  <nav class="navbar navbar-light bg-info">
+    <div class="container-fluid">
+      <app-logo />
+      <a class="navbar-brand" routerLink="/about">About</a>
+      <app-search (searchEvent)="onSearch($event)" />
+    </div>
+  </nav>
+</header>
