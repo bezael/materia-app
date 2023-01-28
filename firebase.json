@@ -1,0 +1,13 @@
+{
+  "hosting": {
+    "site": "autocomplete-6d6d7",
+    "public": "dist/materia",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
